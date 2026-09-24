@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "a2z-resolution-deploy",
+  "version": "0.1.0",
+  "description": "Human-reviewed Arabic-English Zendesk support pilot CLI; synthetic demo profile",
+  "source": {
+    "url": "https://github.com/AAH20/a2z-resolution-engine.git",
+    "commit": "5aa314fb1b2b24cb0a90d6b3a64d5af83b49c5c2"
+  },
+  "python_min": "3.11",
+  "entry_module": "resolution_engine.deploy",
+  "evidence_class": "SYNTHETIC_DEMO_ONLY"
+}

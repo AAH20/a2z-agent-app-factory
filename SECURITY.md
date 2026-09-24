@@ -1,0 +1,3 @@
+# Security
+
+Report vulnerabilities through GitHub Security Advisories. Do not include customer tickets, finance records, credentials or private bundles in issues. The factory installs and runs application code; install only bundles whose pinned source revision you have reviewed and trust. SHA-256 checks detect local changes but do not authenticate a publisher or prevent a malicious source author. v1 does not sandbox code, verify software dependencies, encrypt customer data, authenticate reviewers, or authorize marketplace publication. Keep installation targets and their data directories under operator-controlled permissions.

@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a2z-agent-app-factory"
+version = "0.1.0"
+description = "Versioned, pinned agent app bundles and local installation verification"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "A2Z SOC"}]
+dependencies = []
+
+[project.scripts]
+a2z-app = "a2z_app_factory.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

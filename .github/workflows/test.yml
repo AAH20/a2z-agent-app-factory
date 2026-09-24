@@ -1,0 +1,31 @@
+name: Test and package demo
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .
+      - run: python -m unittest discover -s tests -v
+      - uses: actions/checkout@v4
+        with:
+          repository: AAH20/a2z-resolution-engine
+          ref: 5aa314fb1b2b24cb0a90d6b3a64d5af83b49c5c2
+          path: upstream-resolution
+          persist-credentials: false
+      - run: a2z-app pack apps/resolution-deploy.json upstream-resolution --output /tmp/resolution.a2zapp
+      - run: a2z-app install /tmp/resolution.a2zapp /tmp/resolution-installed
+      - run: a2z-app verify /tmp/resolution-installed
+      - run: |
+          a2z-app run /tmp/resolution-installed -- \
+            --knowledge /tmp/resolution-installed/source/examples/knowledge.synthetic.json \
+            --db /tmp/resolution-demo.sqlite3 prepare \
+            --ticket-file /tmp/resolution-installed/source/examples/zendesk-ticket.synthetic.json \
+            --locale en
+        env:
+          RESOLUTION_ENGINE_KEY: synthetic-ci-key-12345678901234567890
